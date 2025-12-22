@@ -1,0 +1,57 @@
+[
+    {
+      "id": "1bd3d6b0-635a-42f7-865c-053d308a7534",
+      "make": "Lightning",
+      "model": "McQueen",
+      "price": 1000000,
+      "url": "https://images.alphacoders.com/131/thumb-1920-1311532.jpeg",
+      "seats": 2,
+      "miles": 15668093,
+      "features": ["0-100 in -2 nanoseconds", "Low KM", "Vehicle Detailed", "Leather Interior"],
+      "description": "He accelerates so quick, space and time gets distorted!"
+    },
+    {
+      "id": "7c4da7d8-dab2-4734-ac7f-b17feabb77d0",
+      "make": "Tow",
+      "model": "Mater",
+      "price": 1,
+      "url": "https://ew.com/thmb/WgwNavaohNC_abAJoxu7-6qcmzA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/15518__cars_l-63c9fedaa8d044a5850daf505277f2ef.jpg",
+      "seats": 2,
+      "miles": 4,
+      "features": ["0-100 in -2 nanoseconds", "Low KM", "Vehicle Detailed", "Leather Interior"],
+      "description": "Not eveneryone's cup of tea, but as they say - 1 man's trash is another man's treasure!"
+    },
+    {
+      "id": "c93cdc8c-e9f6-4498-88dd-fcb8768dc969",
+      "make": "Range Rover",
+      "model": "Sport",
+      "price": 84777,
+      "url": "https://www.carhelpcanada.com/wp-content/uploads/2019/12/2020-Range-Rover-Evoque-2.jpg",
+      "seats": 5,
+      "miles": 14666,
+      "features": ["No Accidents", "Low KM", "Vehicle Detailed", "Leather Interior"],
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis odio et laboriosam!"
+    },
+    {
+      "id": "9328206f-75ae-4bcf-999b-1ebdecafa3db",
+      "make": "Rolls Royce",
+      "model": "Ghost",
+      "price": 455000,
+      "url": "https://robbreport.com/wp-content/uploads/2021/03/1-5.jpg?w=1000",
+      "seats": 5,
+      "miles": 53666,
+      "features": ["No Accidents", "Low KM", "Vehicle Detailed", "Leather Interior"],
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis odio et laboriosam! Numquam ut rem, blanditiis est rerum tenetur maxime delectus"
+    },
+    {
+      "id": "1de324a0-531f-4a64-abd6-e97d98509b0es",
+      "make": "Porsche",
+      "model": "Taycan",
+      "price": 180434,
+      "url": "https://www.topgear.com/sites/default/files/cars-car/carousel/2021/02/pcgb20_1441_fine.jpg",
+      "seats": 5,
+      "miles": 0,
+      "features": ["No Accidents", "Low KM", "Vehicle Detailed", "Leather Interior"],
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis odio et"
+    }
+  ]
