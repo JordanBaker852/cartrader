@@ -1,9 +1,14 @@
-<script setup lang="ts">
-    const { cars } = useCars();
+<script setup>
+    
+    const props = defineProps({
+        cars: {
+            type: Array
+        }
+    });
 
-    const likedCars = useLocalStorage("favouriteCars", [] as Array<string>);
+    const likedCars = useLocalStorage("favouriteCars", []);
 
-    const handleFavourite = (id: string) => {
+    const handleFavourite = (id) => {
         if (likedCars.value.includes(id))
         {
             const likedCarIndex = likedCars.value.indexOf(id);

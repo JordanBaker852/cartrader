@@ -7,5 +7,8 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxtjs/supabase",
     "@vueuse/nuxt"
-  ]
+  ],
+  supabase: {
+    redirect: false
+  }
 })

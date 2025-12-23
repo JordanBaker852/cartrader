@@ -5,11 +5,12 @@
 
     const supabase = useSupabaseClient();
 
-    const user = useSupabaseUser();
-
-    const login = () => {
-        const {error} = supabase.auth.signInWithOAuth({
-            provider: 'google'
+    const login = async () => {
+        const { error } = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+                redirectTo: 'http://localhost:3000/confirm',
+            }
         });
 
         if (error) {
