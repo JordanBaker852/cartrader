@@ -1,15 +1,18 @@
 <script setup>
     const route = useRoute();
-    const cars = await useFetchCars(route.params.city, {
-        make: route.path.make,
-        minPrice: route.query.minPrice,
-        maxPrice: route.query.maxPrice,
+    const cars = await useFetchCars({
+        make: route.params.make
+    });
+
+    definePageMeta({
+        layout: "custom"
     });
 
 </script>
 
 <template>
     <div>
-        <CarCards :cars="cars" />
+        <CarCards v-if="cars.length" :cars="cars" />
+        <h1 class="text-red-600" v-else >No {{ route.params.make }} cars found</h1>
     </div>
 </template>

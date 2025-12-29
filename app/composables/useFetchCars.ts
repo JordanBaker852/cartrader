@@ -1,12 +1,12 @@
-export default async (city: string, filters: Object) => {
-    const { data, error } = await useFetch(`/api/cars/${city}`, {
+export default async (filters: Object) => {
+    const { data, error } = await useFetch("/api/cars", {
         method: 'GET',
         params: {
             ...filters
         }
     });
 
-    if (error)
+    if (error.value)
     {
         throw createError({
             ...error.value,

@@ -1,32 +1,31 @@
 <script setup>
     const route = useRoute();
     const { capitaliseFirstLetter, replaceHyphensWithSpaces } = useUtilities();
-    const { cars } = useCars();
+    const { fetchCarById, fetchCarByMakeAndModel } = useFetchCar();
 
     useHead({
         title: `${capitaliseFirstLetter(route.params.make)} ${capitaliseFirstLetter(route.params.model)}`
     });
 
-    const car = computed(() => {
+    const fetchCarFromRouteParams = async () => { 
 
-        if (route.params.modelGuid) {
-            return cars.find(c => c.id === route.params.modelGuid);
+        if (route.params.id) {
+            return await fetchCarById(route.params.id);
         }
 
         //route parameters replace spaces with hyphens for SEO 
         const makeRouteParam = replaceHyphensWithSpaces(route.params.make);
         const modelRouteParam = replaceHyphensWithSpaces(route.params.model);
         
-        return cars.find(c => 
-            c.make.toLowerCase() === makeRouteParam.toLowerCase() && 
-            c.model.toLowerCase() === modelRouteParam.toLowerCase()
-        );
-    });
+        return await fetchCarByMakeAndModel(makeRouteParam, modelRouteParam);
+    };
+
+    const car = await fetchCarFromRouteParams();
 
     if (!car.value) {
         throw createError({ statusCode: 404, statusMessage: "Car not found" });
     }
-
+ 
     definePageMeta({
         layout: "custom"
     });
