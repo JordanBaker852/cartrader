@@ -1,10 +1,10 @@
 <script setup>
-
     definePageMeta({
         layout: "custom"
     });
 
     const { makes } = useCars();
+    const user = useSupabaseUser();
 
     const info = useState("listingInfo", () => {
         return {
@@ -16,9 +16,11 @@
             city: "",
             seats: 0,
             features: "",
-            image: null
+            imageUrl: "placeholder.png"
         };
     });
+
+    const isError = ref(false);
 
     const onChange = (data, name) => {
         if (!info.value[name] in info.value)
@@ -31,8 +33,6 @@
         else {
             info.value[name] = data;
         }
-
-        console.log(data);
 
         return;
     };
@@ -101,12 +101,63 @@
             maximum: null,
             placeholder: "Leather interior, No accidents"
         }
-    ]; 
+    ];
+
+    const isButtonDisabled = computed(() => {
+        for (let key in info.value)
+        {
+            if (!info.value[key])
+            {
+                return true
+            }
+        }
+
+        return false;
+    });
+
+    const handleSubmit = async () => {
+        if (isButtonDisabled.value)
+        {
+            return;
+        }
+
+        const body = {
+            ...info.value,
+            features: info.value.features.split(", "),
+            ownerId: user.value.sub,
+            imageUrl: info.value.image?.name ?? "placeholder.png"
+        };
+
+        delete body.image;
+
+        try
+        {
+            const response = await fetch("/api/cars/listings", {
+                method: "POST",
+                body: JSON.stringify(body),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+
+            if (response.ok)
+            {
+                return navigateTo("/profile/listings");
+            }
+            
+            const json = await response.json();
+            console.error(json);
+        }
+        catch (error) {
+            console.error(error);
+        }
+
+        isError.value = true;
+    };
 </script>
 
 <template>
     <div>
-        {{ info.image }}
         <div class="mt-24">
             <h1 class="text-6xl">Create a New Listing</h1>
         </div>
@@ -116,5 +167,9 @@
             <CarListingTextArea title="Description *" name="description" placeholder="" @input-on-change="onChange" />
             <CarListingImage @change-input="onChange" />
         </div>
+        <div>
+            <button @click="handleSubmit" :disabled="isButtonDisabled" class="bg-blue-500 text-white rounded py-2 px-7 mt-3">Submit</button>
+        </div>
+        <span v-if="isError" class="text-red-400">An error has occured, please see the console for details</span>
     </div>
 </template>

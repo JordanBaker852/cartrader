@@ -1,12 +1,12 @@
 <script setup>
     const route = useRoute();
-    const { isLastCharacterAnS, capitaliseFirstLetter } = useUtilities();
+    const { pluraliseWord, capitaliseFirstLetter } = useUtilities();
 
     const tryGetCarMake = () => {
         if (route.params.make)
         {
             const capitalisedMake = capitaliseFirstLetter(route.params.make);
-            return isLastCharacterAnS(route.params.make) ? `${capitalisedMake}'` : `${capitalisedMake}'s` 
+            return pluraliseWord(capitalisedMake);
         }
 
         return "Cars";

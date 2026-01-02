@@ -7,8 +7,8 @@ const defineNextRouteMiddleware = ((to: any, from: any) => {
 
     const user = useSupabaseUser();
 
-    if (!user) {
-        return navigateTo('/');
+    if (!user.value) {
+        return navigateTo('/login');
     }
 
     return;

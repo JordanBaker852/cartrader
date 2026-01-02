@@ -7,6 +7,8 @@
         maxPrice: route.query.maxPrice,
     });
 
+    const { capitaliseFirstLetter } = useUtilities();
+
     watch(() => route.query, () => window.location.reload());
 
     definePageMeta({
@@ -18,6 +20,6 @@
 <template>
     <div>
         <CarCards v-if="cars.length" :cars="cars" />
-        <h1 class="text-red-600" v-else >No {{ route.params.make }} cars found in {{ route.params.city }}</h1>
+        <h1 class="text-red-600" v-else >No {{ route.params.make }} cars found in {{ capitaliseFirstLetter(route.params.city) }}</h1>
     </div>
 </template>

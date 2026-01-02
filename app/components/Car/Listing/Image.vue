@@ -2,7 +2,7 @@
     const image = useState("carImage", () => {
         return {
             preview: null,
-            image: null
+            image: "placeholder.png"
         };
     });
 

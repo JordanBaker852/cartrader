@@ -8,7 +8,7 @@
             return isInputError.value = true;
         }
 
-        navigateTo(`/city/${city.value}/car`);
+        navigateTo(`/city/${city.value.toLowerCase()}/cars`);
     };
 
     const handleInputValidation = () => {

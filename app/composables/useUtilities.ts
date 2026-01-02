@@ -8,8 +8,13 @@ export const useUtilities = () => {
         return word.charAt(0).toUpperCase() + word.slice(1);
     };
 
-    const isLastCharacterAnS = (word: string): boolean => {
-        return word.charAt(word.length - 1) == "s";
+    const pluraliseWord = (word: string): string => {
+        if (word.length == 0)
+        {
+            return ""
+        }
+
+        return word.charAt(word.length - 1) == "s" ? `${word}'` : `${word}'s`;
     };
 
     const replaceHyphensWithSpaces = (word: string): string => {
@@ -22,7 +27,7 @@ export const useUtilities = () => {
 
     return {
         capitaliseFirstLetter,
-        isLastCharacterAnS,
+        pluraliseWord,
         replaceHyphensWithSpaces,
         convertStringToUrlSlug
     };

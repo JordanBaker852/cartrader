@@ -1,4 +1,4 @@
-export default async (filters: Object) => {
+export default async (filters: object) => {
     const { data, error } = await useFetch("/api/cars", {
         method: 'GET',
         params: {
@@ -9,8 +9,7 @@ export default async (filters: Object) => {
     if (error.value)
     {
         throw createError({
-            ...error.value,
-            statusMessage: "Unable to fetch cars"
+            ...error.value
         });
     }
 

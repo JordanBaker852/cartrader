@@ -28,7 +28,7 @@
         @click="navigateTo(`/car/${convertStringToUrlSlug(car.make)}/${convertStringToUrlSlug(car.model)}/${car.id}`)">
         <img class="absolute w-7 right-5 top-2 z-20" :src="favoured ? heartFilled : heartOutline" alt="" @click="(event) => handleFavouriteClick(event)" />
         <div class="flex h-full">
-            <NuxtImg :src="car.url" alt="Lightning McQueen" class="w-[300px] h-full" />
+            <NuxtImg :src="car.url" :alt="`${car.make} ${car.model}`" class="w-[300px] h-full" />
             <div class="p-4 flex flex-col">
                 <div>
                     <h1 class="text-2xl text-blue-700">{{ `${car.make} ${car.model}` }}</h1>
